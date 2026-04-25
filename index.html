@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hardest Achievements List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="background-root">
+        <div id="blue-tint-overlay"></div>
+        <div id="dynamic-background">
+            <div id="bg-layer-0" class="bg-layer"></div>
+            <div id="bg-layer-1" class="bg-layer"></div>
+        </div>
+    </div>
+    <header class="main-header">
+        <div class="header-bar">
+            <img src="https://raw.githubusercontent.com/AncepsGD/the-hardest-achievements-list/refs/heads/main/public/assets/favicon-96x96.png" alt="THAL Logo" class="site-logo" />
+            <h1 class="main-title">The Hardest Achievements List</h1>
+            <div class="hamburger-wrap">
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="hamburger-menu" id="hamburgerMenu" aria-hidden="true">
+                    <div class="hamburger-menu-inner" id="tabsNav" aria-label="Dataset tabs"></div>
+                </div>
+            </div>
+        </div>
+        <div class="controls-row">
+            <input
+                type="text"
+                class="search-input"
+                id="searchInput"
+                placeholder="Search by name, player, ID…"
+                autocomplete="off"
+            />
+            <span class="sort-label">Sort:</span>
+            <select class="sort-select" id="sortSelect">
+                <option value="rank">Rank (Default)</option>
+                <option value="name">Name</option>
+                <option value="length">Length</option>
+                <option value="levelID">Level ID</option>
+                <option value="date">Date</option>
+                <option value="random">Random</option>
+            </select>
+            <button class="sort-dir-btn" id="sortDirBtn" title="Toggle sort direction">↑</button>
+            <label class="pill-toggle" id="platformToggle" title="Switch between Classic and Platformer">
+                <input type="checkbox" id="platformerCheckbox" />
+                <span class="track">
+                    <span class="inner-label label-left">Classic</span>
+                    <span class="thumb"></span>
+                    <span class="inner-label label-right">Platformer</span>
+                </span>
+            </label>
+        </div>
+        <div class="tag-filter-area" id="tagFilterArea" style="display:none;">
+            <span class="tag-filter-label">Tags:</span>
+            <div class="tag-pills-wrap" id="tagPills"></div>
+            <button class="clear-filters-btn" id="clearFiltersBtn" style="display:none;">✕ Clear</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="results-meta" id="resultsMeta"></div>
+        <div id="content">
+            <div class="loading">Loading…</div>
+        </div>
+    </div>
+
+    <div id="achievementModal" class="modal-overlay" style="display:none;" aria-modal="true" role="dialog">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+            <div class="modal-inner" id="modalInner"></div>
+        </div>
+    </div>
+
+    <div id="editorModal" class="editor-overlay" style="display:none;" aria-modal="true" role="dialog">
+        <div class="editor-box">
+            <div class="editor-header">
+                <div class="editor-header-left">
+                    <span class="editor-title" id="editorTitle">List Editor</span>
+                    <span class="editor-count" id="editorCount"></span>
+                </div>
+                <div class="editor-header-actions">
+                    <button class="editor-action-btn" id="editorAddBtn">+ Add Item</button>
+                    <button class="editor-action-btn gold" id="editorCopyBtn">⎘ Copy JSON</button>
+                    <button class="editor-action-btn gold" id="editorDownloadBtn">↓ Download</button>
+                    <button class="editor-action-btn green" id="editorApplyBtn">✓ Apply & Close</button>
+                    <button class="editor-action-btn dim" id="editorCloseBtn">✕ Discard</button>
+                </div>
+            </div>
+            <div class="editor-hint">Drag <span>⠿</span> to reorder · Click <strong>Edit</strong> to expand fields · Changes apply only when you click <strong>Apply & Close</strong></div>
+            <div id="editorList" class="editor-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
